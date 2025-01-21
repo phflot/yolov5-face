@@ -225,7 +225,6 @@ def detect_landmarks(model, im, device):
     pred = model(img)[0]
 
     pred = non_max_suppression_face(pred, conf_thres, iou_thres)
-    print(len(pred[0]), 'face' if len(pred[0]) == 1 else 'faces')
 
     results = []
     for det in pred:
