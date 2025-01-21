@@ -9,12 +9,12 @@ import torch
 import torch.backends.cudnn as cudnn
 from numpy import random
 import numpy as np
-from models.experimental import attempt_load
-from utils.datasets import letterbox
-from utils.general import check_img_size, check_requirements, non_max_suppression_face, apply_classifier, \
+from yolov5_face.models.experimental import attempt_load
+from yolov5_face.utils.datasets import letterbox
+from yolov5_face.utils.general import check_img_size, check_requirements, non_max_suppression_face, apply_classifier, \
     scale_coords, xyxy2xywh, strip_optimizer, set_logging, increment_path
-from utils.plots import plot_one_box
-from utils.torch_utils import select_device, load_classifier, time_synchronized
+from yolov5_face.utils.plots import plot_one_box
+from yolov5_face.utils.torch_utils import select_device, load_classifier, time_synchronized
 from tqdm import tqdm
 
 def dynamic_resize(shape, stride=64):
@@ -126,7 +126,7 @@ if __name__ == '__main__':
     parser.add_argument('--exist-ok', action='store_true', help='existing project/name ok, do not increment')
     parser.add_argument('--save_folder', default='./widerface_evaluate/widerface_txt/', type=str, help='Dir to save txt results')
     parser.add_argument('--dataset_folder', default='../WiderFace/val/images/', type=str, help='dataset path')
-    parser.add_argument('--folder_pict', default='/yolov5-face/data/widerface/val/wider_val.txt', type=str, help='folder_pict')
+    parser.add_argument('--folder_pict', default='/yolov5_face/data/widerface/val/wider_val.txt', type=str, help='folder_pict')
     opt = parser.parse_args()
     print(opt)
 

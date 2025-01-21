@@ -15,11 +15,11 @@ import pandas as pd
 import seaborn as sns
 import torch
 import yaml
-from PIL import Image, ImageDraw
+from PIL import Image
 from scipy.signal import butter, filtfilt
 
-from utils.general import xywh2xyxy, xyxy2xywh
-from utils.metrics import fitness
+from yolov5_face.utils.general import xywh2xyxy, xyxy2xywh
+from yolov5_face.utils.metrics import fitness
 
 # Settings
 matplotlib.rc('font', **{'size': 11})

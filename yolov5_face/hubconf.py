@@ -9,9 +9,9 @@ from pathlib import Path
 
 import torch
 
-from models.yolo import Model
-from utils.general import set_logging
-from utils.google_utils import attempt_download
+from yolov5_face.models.yolo import Model
+from yolov5_face.utils.general import set_logging
+from yolov5_face.utils.google_utils import attempt_download
 
 dependencies = ['torch', 'yaml']
 set_logging()
@@ -135,7 +135,7 @@ if __name__ == '__main__':
     # Verify inference
     from PIL import Image
 
-    imgs = [Image.open(x) for x in Path('data/images').glob('*.jpg')]
+    imgs = [Image.open(x) for x in Path('../data/images').glob('*.jpg')]
     results = model(imgs)
     results.show()
     results.print()

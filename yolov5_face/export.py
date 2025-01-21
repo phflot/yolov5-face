@@ -8,15 +8,15 @@ import argparse
 import sys
 import time
 
-sys.path.append('./')  # to run '$ python *.py' files in subdirectories
+sys.path.append('../')  # to run '$ python *.py' files in subdirectories
 
 import torch
 import torch.nn as nn
 
-import models
-from models.experimental import attempt_load
-from utils.activations import Hardswish, SiLU
-from utils.general import set_logging, check_img_size
+import yolov5_face.models
+from yolov5_face.models.experimental import attempt_load
+from yolov5_face.utils.activations import Hardswish, SiLU
+from yolov5_face.utils.general import set_logging, check_img_size
 import onnx
 
 if __name__ == '__main__':
