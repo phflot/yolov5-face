@@ -204,6 +204,51 @@ def detect(
                     except Exception as e:
                         print(e)
 
+
+def detect_landmarks(model, im, device):
+    img_size = im.shape[0]
+    conf_thres = 0.6
+    iou_thres = 0.5
+
+    orgimg = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
+    img0 = copy.deepcopy(orgimg)
+    imgsz = check_img_size(img_size, s=model.stride.max())
+    img = letterbox(img0, new_shape=imgsz)[0]
+    img = img.transpose(2, 0, 1).copy()
+
+    img = torch.from_numpy(img).to(device)
+    img = img.float()
+    img /= 255.0
+    if img.ndimension() == 3:
+        img = img.unsqueeze(0)
+
+    pred = model(img)[0]
+
+    pred = non_max_suppression_face(pred, conf_thres, iou_thres)
+    print(len(pred[0]), 'face' if len(pred[0]) == 1 else 'faces')
+
+    results = []
+    for det in pred:
+        im0 = img0.copy()
+
+        if len(det):
+            det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
+            det[:, 5:15] = scale_coords_landmarks(img.shape[2:], det[:, 5:15], im0.shape).round()
+
+            for j in range(det.size()[0]):
+                xyxy = det[j, :4].view(-1).tolist()
+                conf = det[j, 4].cpu().numpy()
+                landmarks = det[j, 5:15].view(-1).tolist()
+                class_num = det[j, 15].cpu().numpy()
+
+                results.append({
+                    "box": xyxy,
+                    "confidence": conf,
+                    "landmarks": landmarks,
+                    "class": class_num
+                })
+
+    return results
                     
             
 
