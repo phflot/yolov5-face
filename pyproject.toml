@@ -9,7 +9,6 @@ description = "Real-time face detection using YOLOv5 - Forked Version"
 readme = "README.md"
 license = {text = "GPL-3.0"}
 
-homepage = "https://github.com/your-username/yolov5-face"
 classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Programming Language :: Python :: 3",
