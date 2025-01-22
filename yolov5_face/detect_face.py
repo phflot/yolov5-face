@@ -248,8 +248,6 @@ def detect_landmarks(model, im, device):
                 })
 
     return results
-                    
-            
 
 
 if __name__ == '__main__':
