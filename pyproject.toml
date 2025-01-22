@@ -6,7 +6,6 @@ build-backend = "setuptools.build_meta"
 name = "yolov5-face"
 version = "0.0.1-alpha.1"
 description = "Real-time face detection using YOLOv5 - Fork"
-website = "https://github.com/deepcam-cn/yolov5-face/"
 readme = "README.md"
 license = {text = "GPL-3.0"}
 requires-python = ">=3.6"
@@ -59,3 +58,6 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.6",
 ]
+
+[project.urls]
+website = "https://github.com/deepcam-cn/yolov5-face/"
